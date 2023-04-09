@@ -5,7 +5,7 @@ use std::vec::Vec;
 pub extern "C" fn query(class: u8, subclass: u8) -> u64 {
     let mut ret: Box<Vec<u32>> = Box::new(Vec::new());
 
-    let locked = super::DEVICES.lock();
+    let locked = super::DEVICES.lock().unwrap();
     for (i, j) in &*locked {
         if j.class == class && j.subclass == subclass {
             (*ret).push(i.raw(0));

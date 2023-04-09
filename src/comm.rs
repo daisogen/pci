@@ -26,8 +26,8 @@ impl Address {
 }
 
 pub fn read(addr: &Address, off: u8) -> u32 {
-    std::asm::out32(CONFIG_ADDRESS, addr.raw(off));
-    std::asm::in32(CONFIG_DATA)
+    std::daisogen::asm::out32(CONFIG_ADDRESS, addr.raw(off));
+    std::daisogen::asm::in32(CONFIG_DATA)
 }
 
 pub fn read_common_header(addr: &Address) -> CommonHeader {

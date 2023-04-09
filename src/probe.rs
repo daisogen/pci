@@ -27,7 +27,7 @@ fn check_device(bus: u8, slot: u8) {
     let header = super::comm::read_common_header(&addr);
     let multifunction = (header.header_type & (1 << 7)) != 0;
 
-    let mut locked = super::DEVICES.lock();
+    let mut locked = super::DEVICES.lock().unwrap();
     locked.insert(addr, header);
 
     if multifunction {

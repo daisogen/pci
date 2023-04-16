@@ -2,6 +2,7 @@
 #![feature(once_cell)]
 
 mod comm;
+mod ops;
 mod probe;
 mod query;
 mod structures;
@@ -19,6 +20,10 @@ fn main() {
     probe::probe();
     //std::daisogen::pd_set("pci_query_class", query::query_class as u64);
     std::daisogen::pd_set("pci_query_vendor", query::query_vendor as u64);
+
+    std::daisogen::pd_set("pci_get_bar", ops::get_bar as u64);
+    std::daisogen::pd_set("pci_set_bus_master", ops::set_bus_master as u64);
+
     std::daisogen::pd_set("pci_ready", 1);
     std::daisogen::yld();
 }

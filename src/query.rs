@@ -1,4 +1,3 @@
-//use std::boxed::Box;
 use std::vec::Vec;
 
 /*#[no_mangle]
@@ -16,7 +15,6 @@ pub extern "C" fn query_class(class: u8, subclass: u8) -> u64 {
     Box::leak(ret) as *const Vec<u32> as u64
 }*/
 
-#[no_mangle]
 pub extern "C" fn query_vendor(vendor: usize, device: usize) -> usize {
     let mut ret: Vec<u32> = vec![];
 
